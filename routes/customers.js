@@ -29,7 +29,7 @@ router.post("/login", addToken, async (req,res) => {
 router.get("/profile", checkToken, async (req,res) => {// to send customer profile when correct token is received for customers
     const allCustomers = await Customers.find();
     const selectedCustomer = allCustomers.find(customer=>customer.customerEmail===req.body.customerEmail);
-    selectedCustomer.customerPassword=req.body.customerPassword;
+    delete selectedCustomer[customerPassword];
     res.send(selectedCustomer);
 }); 
 
