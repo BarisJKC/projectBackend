@@ -5,10 +5,10 @@ const cors = require('cors'); // to allow crossorigin com
 const app=express(); // to shorten syntax
 
 //routes definitions
-// const adminsRoute = require("./routes/admins");
+const adminsRoute = require("./routes/admins");
 const customersRoute = require("./routes/customers");
-// const vendorsRoute = require("./routes/vendors");
-// const productsRoute = require("./routes/products");
+const vendorsRoute = require("./routes/vendors");
+const productsRoute = require("./routes/products");
 const ordersRoute = require("./routes/orders");
 const commentsRoute = require("./routes/comments");
 
@@ -27,10 +27,10 @@ app.use(express.json()); //Accept json format for request body
 app.use(cors({exposedHeaders:['Authorization']})); // to allow cross-origin com and in order to expose the header section
 
 //routes linking
-// app.use("/admins",adminsRoute);
+app.use("/admins",adminsRoute);
 app.use("/customers",customersRoute);
-// app.use("/vendors",vendorsRoute);
-// app.use("/products",productsRoute);
+app.use("/vendors",vendorsRoute);
+app.use("/products",productsRoute);
 app.use("/orders",ordersRoute);
 app.use("/comments",commentsRoute);
 
