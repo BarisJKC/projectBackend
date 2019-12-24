@@ -14,7 +14,7 @@ addToken = async (req,res,next) => {
         if (!selectedAdmin) return res.status(400).send(`Admin does not exisit.`);
         const isPasswordValid = bcrypt.compareSync(password,selectedAdmin.adminPassword);
         if (!isPasswordValid) return res.status(400).send('Invalid email or password');
-        const token = jwt.sign(_.pick(selectedAdmin,['adminEmail','adminName','adminCreated']),"MarketPlace");
+        const token = jwt.sign(_.pick(selectedAdmin,['adminEmail','adminName','adminCreated']),process.env.SECRET);
         res.header('Authorization',token).send(`Hello ${selectedAdmin.adminName}, Welcome to your account at MarketPlace`);
         next();
     } else if(req.body.customerEmail) {
@@ -26,7 +26,7 @@ addToken = async (req,res,next) => {
         const isPasswordValid = bcrypt.compareSync(password,selectedCustomer.customerPassword);
         if (!isPasswordValid) return res.status(400).send('Invalid email or password');
         selectedCustomer.customerPassword=password;
-        const token = jwt.sign(_.pick(selectedCustomer,['customerEmail','customerName','customerCity','customerPassword']),"MarketPlace");
+        const token = jwt.sign(_.pick(selectedCustomer,['customerEmail','customerName','customerCity','customerPassword']),process.env.SECRET);
         res.header('Authorization',token).send(`Hello ${selectedCustomer.customerName}, Welcome to your account at MarketPlace`);
         next();
     } else if(req.body.vendorEmail) {
@@ -37,7 +37,7 @@ addToken = async (req,res,next) => {
         if (!selectedVendor) return res.status(400).send(`Vendor does not exisit.`);
         const isPasswordValid = bcrypt.compareSync(password,selectedVendor.vendorPassword);
         if (!isPasswordValid) return res.status(400).send('Invalid email or password');
-        const token = jwt.sign(_.pick(selectedVendor,['vendorEmail','vendorName','vendorCity']),"MarketPlace");
+        const token = jwt.sign(_.pick(selectedVendor,['vendorEmail','vendorName','vendorCity']),process.env.SECRET);
         res.header('Authorization',token).send(`Hello ${selectedVendor.vendorName}, Welcome to your account at MarketPlace`);
         next();
     };
