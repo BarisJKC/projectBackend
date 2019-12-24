@@ -2,7 +2,7 @@ const express = require("express"); // HTTP server
 const router = express.Router(); // use router module of express
 const Vendors = require("../models/Vendors"); // to use model
 const addSaltToPassword = require('../middleware/addSaltToPassword'); // to add salt into password by middleware
-const addToken = require('../middleware/addtoken'); // to add token for the admin login
+const addToken = require('../middleware/addToken'); // to add token for the admin login
 const checkToken = require('../middleware/checkToken'); // to ckeck token to be correct or not
 
 router.get("/", async (req,res) => {// to list names of all registered vendors. must be async
