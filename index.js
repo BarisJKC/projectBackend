@@ -14,8 +14,6 @@ const productsRoute = require("./routes/products");
 const ordersRoute = require("./routes/orders");
 const commentsRoute = require("./routes/comments");
 
-// mongodb://localhost:27017/MPDB
-
 mongoose // database connection
 .connect(process.env.DATABASE_URL, {useNewUrlParser: true, useUnifiedTopology: true })
 .then(() => console.log("Connected to MongoDB...."))
