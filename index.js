@@ -3,6 +3,7 @@ if (process.env.NODE_ENV !== "production") require("dotenv").config();
 const express = require('express'); // HTTP server
 const mongoose = require('mongoose'); // database
 const cors = require('cors'); // to allow crossorigin com
+const wakeUpDyno = require("./helpers/helpers"); // my module!
 
 const app=express(); // to shorten syntax
 
@@ -38,4 +39,4 @@ app.post("*", async (req,res) => {res.status(404).send("No such page")}); // to 
 app.put("*", async (req,res) => {res.status(404).send("No such page")}); // to respond for unknown url requests
 app.delete("*", async (req,res) => {res.status(404).send("No such page")}); // to respond for unknown url requests
 
-app.listen(process.env.PORT,()=>console.log(`Server is listening at port ${process.env.PORT}...`)); // server to listen
+app.listen(process.env.PORT,()=>{wakeUpDyno();console.log(`Server is listening at port ${process.env.PORT}...`)}); // server to listen
