@@ -13,7 +13,7 @@ const wakeUpDyno = () => {
             clearTimeout(timer);
             return wakeUpDyno();
         }
-    }, 3000000);
+    }, 1500000);
 };
 
 module.exports = wakeUpDyno;
