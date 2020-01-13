@@ -39,4 +39,5 @@ app.post("*", async (req,res) => {res.status(404).send("No such page")}); // to 
 app.put("*", async (req,res) => {res.status(404).send("No such page")}); // to respond for unknown url requests
 app.delete("*", async (req,res) => {res.status(404).send("No such page")}); // to respond for unknown url requests
 
-app.listen(process.env.PORT,()=>{wakeUpDyno();console.log(`Server is listening at port ${process.env.PORT}...`)}); // server to listen
+app.listen(process.env.PORT,()=>{console.log(`Server is listening at port ${process.env.PORT}...`)}); // server to listen
+// wakeUpDyno();
