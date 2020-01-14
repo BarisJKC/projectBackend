@@ -26,7 +26,7 @@ router.post("/login", addToken, async (req,res) => {
         console.log(req.body.customerEmail);
 }); // to login for customers
 
-router.get("/profile", checkToken, async (req,res) => {// to send customer profile when correct token is received for customers
+router.post("/profile", checkToken, async (req,res) => {// to send customer profile when correct token is received for customers
     const allCustomers = await Customers.find();
     const selectedCustomer = allCustomers.find(customer=>customer.customerEmail===req.body.customerEmail);
     selectedCustomer.customerPassword = undefined;
